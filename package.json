@@ -4,7 +4,8 @@
   "description": "**BeAVoter** is a secure, user-friendly online voting system that allows users to cast their votes digitally with ease and transparency.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,27 @@
+{
+  "name": "beavoter",
+  "version": "1.0.0",
+  "description": "**BeAVoter** is a secure, user-friendly online voting system that allows users to cast their votes digitally with ease and transparency.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solutiontech214/BeAVoter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/solutiontech214/BeAVoter/issues"
+  },
+  "homepage": "https://github.com/solutiontech214/BeAVoter#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.4",
+    "nodemon": "^3.1.10"
+  }
+}

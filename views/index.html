@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BeAVoter</title>
+  <link rel="stylesheet" href="../public/homeStyle.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">BEAVOTER</div>
+</svg>
+</div>
+    <ul class="nav-links">
+      
+      
+      <li><a href="#">Register</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Vote</a></li>
+      <li><a href="#">Results</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+<center> <div class="typewriter" id="typeText"></div>
+</center>
+
+<script>
+   const phrases = ["Your Voice...", "Your Power...", "Your Vote..."];
+    const typeSpeed = 250;
+    const deleteSpeed = 50;
+    const delay = 250; // wait before deleting
+
+    let i = 0;
+    let j = 0;
+    let currentPhrase = [];
+    let isDeleting = false;
+    let isEnd = false;
+
+    function loop() {
+      const typeWriter = document.getElementById("typeText");
+
+      typeWriter.innerHTML = currentPhrase.join("");
+
+      if (i < phrases.length) {
+        if (!isDeleting && j <= phrases[i].length) {
+          currentPhrase.push(phrases[i][j]);
+          j++;
+        }
+
+        if (isDeleting && j >= 0) {
+          currentPhrase.pop();
+          j--;
+        }
+
+        if (j === phrases[i].length) {
+          isEnd = true;
+          isDeleting = true;
+        }
+
+        if (isDeleting && j === 0) {
+          currentPhrase = [];
+          isDeleting = false;
+          isEnd = false;
+          i++;
+          if (i >= phrases.length) i = 0; // loop
+        }
+      }
+
+      const speed = isEnd ? delay : isDeleting ? deleteSpeed : typeSpeed;
+      setTimeout(loop, speed);
+    }
+
+    loop();
+</script>
+</body>
+</html>

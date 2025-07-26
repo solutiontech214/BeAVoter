@@ -5,6 +5,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'register.html'));
+
+})
 app.listen(3000,(req,res)=>{
   console.log("Your Server is Listning at PORT http://localhost:3000")
 })

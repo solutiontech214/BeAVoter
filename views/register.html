@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - BeAVoter</title>
+  <link rel="stylesheet" href="/registration.css" />
+</head>
+<body>
+  <nav>
+    <a href="/"><span class="logo" >BEAVOTER</span></a>
+    <ul class="nav-links">
+      
+   
+   <li><a href="/contact">Contact</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+  <br><br>
+  <div class="registration-container">
+    <div class="illustration">
+      <!-- Voting SVG illustration -->
+      <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="60" cy="90" rx="50" ry="8" fill="#ece6fb"/>
+        <rect x="20" y="36" rx="6" width="80" height="46" fill="#f5f7fa" stroke="#8e2de2" stroke-width="2"/>
+        <rect x="36" y="40" width="25" height="12" rx="3" fill="#8e2de2" opacity="0.15"/>
+        <rect x="36" y="58" width="48" height="7" rx="2" fill="#a285dd" opacity="0.18"/>
+        <rect x="36" y="68" width="40" height="6" rx="2" fill="#a285dd" opacity="0.15"/>
+
+        <g>
+          <circle cx="38" cy="28" r="11" fill="#4a00e0"/>
+          <ellipse cx="38" cy="32" rx="6" ry="2" fill="#fff" opacity="0.8"/>
+          <rect x="35" y="21" width="6" height="10" rx="2.5" fill="#fff" opacity="0.9"/>
+        </g>
+
+        <g>
+          <circle cx="82" cy="27" r="9" fill="#ffcc00"/>
+          <ellipse cx="82" cy="31" rx="4.5" ry="1.5" fill="#fff" opacity="0.7"/>
+          <rect x="80" y="20" width="4" height="7" rx="1.6" fill="#fff" opacity="0.9"/>
+        </g>
+
+        <g>
+          <circle cx="60" cy="17" r="10" fill="#8e2de2"/>
+          <ellipse cx="60" cy="23" rx="6" ry="2" fill="#fff" opacity="0.7"/>
+          <rect x="57" y="11" width="6" height="8" rx="2" fill="#fff" opacity="0.9"/>
+        </g>
+
+        <!-- Pointer/Click -->
+        <g>
+          <rect x="99" y="61" width="6" height="18" rx="3" fill="#ae95f4"/>
+          <polygon points="102,77 97,89 107,84" fill="#ffcc00"/>
+        </g>
+      </svg>
+    </div>
+    <div class="info-banner">
+      Register once, vote from anywhere, anytime, securely!
+    </div>
+    <h2>Register as a Voter</h2>
+    <form id="registrationForm">
+      <div>
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+      </div>
+       <div>
+        <label for="profilePicture">Profile Picture</label>
+        <input type="file" id="profilePicture" name="profilePicture" accept="image/*" />
+        <div class="profile-preview" id="profilePreview"></div>
+      </div>
+      <div>
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age" min="18" max="120" required />
+      </div>
+      <div>
+        <label for="phno">Phone Number</label>
+        <input type="text" id="phno" name="phno" placeholder="Enter your phone number" pattern="[0-9]{10}" title="Enter 10-digit phone number" required />
+      </div>
+      <div>
+        <label for="aadharNo">Aadhar Number</label>
+        <input type="text" id="aadharNo" name="aadharNo" placeholder="Enter your Aadhar number" pattern="[0-9]{12}" title="Enter 12-digit Aadhar number" required />
+      </div>
+     
+      <div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" minlength="6" required />
+      </div>
+      <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" minlength="6" required />
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    // Profile picture preview
+    const profileInput = document.getElementById('profilePicture');
+    const profilePreview = document.getElementById('profilePreview');
+
+    profileInput.addEventListener('change', () => {
+      profilePreview.innerHTML = '';
+      const file = profileInput.files[0];
+      if (file) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.onload = () => URL.revokeObjectURL(img.src);
+        profilePreview.appendChild(img);
+      }
+    });
+
+    // Password confirmation validation
+    const form = document.getElementById('registrationForm');
+    form.addEventListener('submit', (e) => {
+      const password = form.password.value;
+      const confirmPassword = form.confirmPassword.value;
+      if (password !== confirmPassword) {
+        e.preventDefault();
+        alert('Passwords do not match. Please try again.');
+        form.confirmPassword.focus();
+      }
+    });
+  </script>
+</body>
+</html>
